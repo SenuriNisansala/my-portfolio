@@ -47,3 +47,36 @@ behavior:"smooth"
 });
 
 }
+
+// Theme toggle
+const themeToggle = document.getElementById('theme-toggle');
+if(themeToggle){
+	const themeIcon = themeToggle.querySelector('i');
+
+	const applyTheme = (theme) => {
+		if(theme === 'dark'){
+			document.body.classList.add('dark');
+			if(themeIcon) themeIcon.classList.remove('fa-moon'), themeIcon.classList.add('fa-sun');
+		} else {
+			document.body.classList.remove('dark');
+			if(themeIcon) themeIcon.classList.remove('fa-sun'), themeIcon.classList.add('fa-moon');
+		}
+		try{ localStorage.setItem('theme', theme); } catch(e){}
+	};
+
+	// Initialize theme from saved preference or OS preference
+	let saved = null;
+	try{ saved = localStorage.getItem('theme'); } catch(e){}
+	if(saved){
+		applyTheme(saved);
+	} else if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
+		applyTheme('dark');
+	} else {
+		applyTheme('light');
+	}
+
+	themeToggle.addEventListener('click', () => {
+		const isDark = document.body.classList.contains('dark');
+		applyTheme(isDark ? 'light' : 'dark');
+	});
+}
