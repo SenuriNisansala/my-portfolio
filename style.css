@@ -318,3 +318,12 @@ font-size:20px;
 display:none;
 cursor:pointer;
 }
+
+.footer{
+    text-align:center;
+    padding:20px;
+    margin-top:40px;
+    background:#24384d;
+    color:white;
+    font-size:14px;
+}
