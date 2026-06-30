@@ -48,7 +48,6 @@ behavior:"smooth"
 
 }
 
-// Theme toggle
 const themeToggle = document.getElementById('theme-toggle');
 if(themeToggle){
 	const themeIcon = themeToggle.querySelector('i');
@@ -64,7 +63,7 @@ if(themeToggle){
 		try{ localStorage.setItem('theme', theme); } catch(e){}
 	};
 
-	// Initialize theme from saved preference or OS preference
+
 	let saved = null;
 	try{ saved = localStorage.getItem('theme'); } catch(e){}
 	if(saved){
